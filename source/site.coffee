@@ -1,16 +1,6 @@
 window.Soyjavi = Soyjavi = version: "1.09.01"
 
-$ ->
-  do Soyjavi.effect.resize
-  $(window).on "resize", Soyjavi.effect.resize
-  $(document).on "scroll", Soyjavi.effect.scroll
-  # Thirds
-  $(window).stellar()
-
-
 Soyjavi.effect = do(s = Soyjavi) ->
-
-  _cache = {}
 
   _el =
     page    : $ window
@@ -40,3 +30,12 @@ Soyjavi.effect = do(s = Soyjavi) ->
 
   resize: resize
   scroll: scroll
+
+
+$ ->
+  do Soyjavi.effect.resize
+  $(window).on "resize", Soyjavi.effect.resize
+  $(document).on "scroll", Soyjavi.effect.scroll
+  # Thirds
+  $(window).stellar()
+

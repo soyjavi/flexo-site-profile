@@ -13,7 +13,7 @@ pkg     = require "./package.json"
 source  =
   coffee : [ "source/*.coffee"]
   stylus : [ "source/*.styl"]
-  bower : "dist/"
+  dist   : "dist/assets/"
 
 banner = [
   "/**"
@@ -39,7 +39,7 @@ gulp.task "coffee", ->
     .pipe coffee().on("error", gutil.log)
     .pipe uglify mangle: false
     .pipe header banner, pkg: pkg
-    .pipe gulp.dest source.bower
+    .pipe gulp.dest "#{source.dist}/js"
     .pipe connect.reload()
 
 gulp.task "stylus", ->
@@ -49,7 +49,7 @@ gulp.task "stylus", ->
       compress: true
       errors  : true
     .pipe header banner, pkg: pkg
-    .pipe gulp.dest source.bower
+    .pipe gulp.dest "#{source.dist}/css"
     .pipe connect.reload()
 
 gulp.task "init", ["coffee", "stylus"]
